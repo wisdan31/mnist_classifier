@@ -1,9 +1,10 @@
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2" # Supress TF Info messages
+
 import argparse
 from models.classifier import MnistClassifier
 from data_loader import load_mnist
 from sklearn.metrics import accuracy_score, classification_report
-import os
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2" # Supress TF Info messages
 
 def preprocess_data(X_train, X_test, model_type):
     """Reshapes data for model."""
@@ -22,7 +23,7 @@ def main():
     parser = argparse.ArgumentParser(description="MNIST Classifier")
     parser.add_argument(
         "--model",
-        choices=["rf", "ffnn", "cnn"],
+        choices=["rf", "fnn", "cnn"],
         required=True)
     
     args = parser.parse_args()
